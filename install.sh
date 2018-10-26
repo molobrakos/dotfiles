@@ -4,3 +4,5 @@ ln -f -v -s $HOME/.dotfiles/home/gitignore $HOME/.gitignore
 ln -f -v -s $HOME/.dotfiles/home/gitconfig $HOME/.gitconfig
 ln -f -v -s $HOME/.dotfiles/home/emacs $HOME/.emacs
 ln -f -v -s $HOME/.dotfiles/home/ssh/config $HOME/.ssh/config
+
+. $HOME/.bashrc
