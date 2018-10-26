@@ -1,16 +1,16 @@
 # -*- mode: shell-script -*-
 
 # Display banner
-test -f ~/dotfiles/bash/greeting.sh && . ~/dotfiles/bash/greeting.sh
+test -f ~/.dotfiles/bash/greeting.sh && . ~/.dotfiles/bash/greeting.sh
 
 # Reset sudo timeout
 sudo -k
 
 # Host specific settings
-test -f ~/dotfiles/bash/bashrc_$(hostname -s) && . ~/dotfiles/bash/bashrc_$(hostname -s)
+test -f ~/.dotfiles/bash/bashrc_$(hostname -s) && . ~/.dotfiles/bash/bashrc_$(hostname -s)
 
 # Aliases
-test -f ~/dotfiles/alias.sh && . ~/dotfiles/alias.sh
+test -f ~/.dotfiles/alias.sh && . ~/.dotfiles/alias.sh
 
 # Allow for .bash_local overrides
 test -f "~/.bashrc_local" && . ~/.bashrc_local
@@ -35,22 +35,10 @@ test -f "/etc/bash_completion.d/password-store" && . /etc/bash_completion.d/pass
 test -f "/etc/bash_completion.d/mosh" && . /etc/bash_completion.d/mosh
 test -f "/etc/bash_completion.d/docker.io" && . /etc/bash_completion.d/docker.io
 
-function _load_dir() {
-    # use like: _load_dir "~/dotfiles/bash/aliases"
-    subdir="$1"
-    FILES="${subdir/*.bash"
-    for f in $FILES
-    do
-        if [ -e "${f}" ]; then
-            source $f
-        fi
-    done
-}
-
 eval `keychain --noask --ignore-missing --eval id_rsa eerepoid EDEBB415`
 
 # Don't freeze when ctrl+s in a shell
 # https://unix.stackexchange.com/questions/12107/how-to-unfreeze-after-accidentally-pressing-ctrl-s-in-a-terminal
 stty -ixon
 
-test -f ~/dotfiles/bash/prompt.bash && . ~/dotfiles/bash/prompt.bash
+test -f ~/.dotfiles/bash/prompt.bash && . ~/.dotfiles/bash/prompt.bash
