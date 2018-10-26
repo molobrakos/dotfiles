@@ -10,7 +10,7 @@ sudo -k
 test -f $HOME/.dotfiles/bash/bashrc_$(hostname -s) && . $HOME/.dotfiles/bash/bashrc_$(hostname -s)
 
 # Aliases
-test -f $HOME/.dotfiles/bash/alias.sh && . $HOME/.dotfiles/bash/alias.sh
+test -f $HOME/.dotfiles/bash/aliases.bash && . $HOME/.dotfiles/bash/aliases.bash
 
 # Allow for .bash_local overrides
 test -f "$HOME/.bashrc_local" && . $HOME/.bashrc_local
