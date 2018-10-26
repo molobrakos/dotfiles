@@ -1,0 +1,15 @@
+() = evalfile ("emacs");
+
+LINENUMBERS=2;
+Startup_With_File = 0;
+TAB_DEFAULT = 4;
+C_INDENT = 4;
+C_Colon_Offset = 0;
+C_CONTINUED_OFFSET = 4;      
+DISPLAY_TIME=1;
+WANT_SYNTAX_HIGHLIGHT = 1;
+BLINK=0;
+ADD_NEWLINE=1;
+
+
+

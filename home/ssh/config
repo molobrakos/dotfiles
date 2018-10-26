@@ -1,0 +1,16 @@
+Include ~/.ssh/config.d/*
+
+ServerAliveInterval 100
+UseRoaming no
+
+Host bitbucketid
+     HostName bitbucket.org
+     PreferredAuthentications publickey
+     IdentityFile ~/.ssh/bitbucketid
+     IdentitiesOnly yes
+
+Host githubid
+     HostName github.com
+     PreferredAuthentications publickey
+     IdentityFile ~/.ssh/githubid
+     IdentitiesOnly yes

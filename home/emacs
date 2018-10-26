@@ -1,0 +1,176 @@
+; check out http://eschulte.github.io/emacs-starter-kit/;; no menu or toolbar
+(menu-bar-mode -1)
+(if (fboundp 'scroll-bar-mode)
+    (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode)
+    (tool-bar-mode -1))
+(blink-cursor-mode 0)
+
+(setq initial-scratch-message "")
+(setq visible-bell t)
+(setq inhibit-startup-message t)
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-echo-area-message "ee")
+
+(setq insert-default-directory t)
+
+
+(setq display-time-day-and-date t
+      display-time-24hr-format t
+      display-time-format "%Y-%m-%d (%a w%W) %H:%M")
+(display-time-mode 1)
+
+;; period and one space between sentences
+(setq sentence-end-double-space nil)
+
+;; always auto-fill-mode in text-mode
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+
+;; Highlight current line
+(global-hl-line-mode 1)
+; (set-face-background 'hl-line "red")
+
+; don't warn
+(setq vc-follow-symlinks t)
+
+(setq frame-title-format '("%b %&"))
+
+;; display line number
+(line-number-mode t) ; in status bar
+(linum-mode t)       ; in left margin
+;; and column
+(column-number-mode t)
+
+(size-indication-mode t))
+(display-battery-mode t)
+
+(setq make-backup-files nil) ; stop creating those backup~ files
+(setq auto-save-default nil) ; stop creating those #autosave# files
+(setq delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
+
+(recentf-mode 1) ; keep a list of recently opened files
+(flyspell-mode t)
+
+(setq-default indent-tabs-mode nil)
+(setq indent-tabs-mode nil)
+(setq show-trailing-whitespace t)
+
+;; http://stackoverflow.com/questions/6344474/how-can-i-make-emacs-highlight-lines-that-go-over-80-chars
+;; free of trailing whitespace and to use 80-column width, standard indentation
+(setq whitespace-style '(trailing
+                         lines
+                         space-before-tab
+                         indentation::space
+                         space-after-tab
+                         empty)
+      whitespace-line-column 80)
+;; no trailing white space
+;(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook 'whitespace-cleanup)
+(add-hook 'makefile-mode-hook 'indent-tabs-mode)
+
+;; some default colors, before loading theme
+(set-background-color "black")
+(set-foreground-color "yellow")
+(set-cursor-color "purple")
+(set-mouse-color "white")
+
+(setenv "PAGER" "cat")
+
+(add-hook 'kill-emacs-query-functions
+          '(lambda ()
+             (y-or-n-p "Do you really want to quit? ")))
+
+;; use y / n instead of yes / no
+(fset 'yes-or-no-p 'y-or-n-p)
+
+(setq c-basic-offset 4)
+(setq tab-width      4)
+(setq indent-tabs-mode nil)
+(setq scroll-step 1)
+
+;; show paren mode
+(show-paren-mode 1)
+(setq show-paren-delay 0)
+
+(load "uniquify")
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+(setq uniquify-after-kill-buffer-p t)
+
+;; font lock
+(global-font-lock-mode t)
+(setq font-lock-maximum-decoration t)
+
+
+(add-to-list 'load-path "~/.emacs.d/lisp")
+; (load "editorconfig")
+(require 'editorconfig nil 'noerror)
+
+;; font
+;(if window-system
+;    (set-face-attribute 'default nil :font "Droid Sans Mono-10"))
+
+;; asciidoc-mode
+;(autoload 'doc-mode "~/.emacs.d/doc-mode.el")
+;(add-to-list 'auto-mode-alist ("\\.adoc\\'" . doc-mode))
+
+(add-hook 'adoc-mode-hook (lambda() (buffer-face-mode t)))
+
+;; making tilde work
+;; from http://www.emacswiki.org/emacs/DeadKeys
+(require 'iso-transl)
+
+; stackexchange mode
+; https://github.com/vermiculus/sx.el/
+; (add-to-list 'load-path "~/.emacs.d/sx.el")
+; (require 'sx-load)
+
+; org-mode
+(when (require 'org nil 'noerrror)
+  (add-to-list 'auto-mode-alist '("\\.todo\\'" . org-mode))
+  ; (setq org-mobile-directory "/scpc:user@remote.host:org/webdav/")
+  (global-set-key "\C-cl" 'org-store-link)
+  (global-set-key "\C-ca" 'org-agenda)
+  (require 'org-crypt)
+  (setq org-mobile-use-encryption t)
+  (org-crypt-use-before-save-magic)
+  (setq org-tags-exclude-from-inheritance (quote ("crypt")))
+  ;; GPG key to use for encryption
+  ;; Either the Key ID or set to nil to use symmetric encryption.
+  (setq org-crypt-key nil)
+  )
+
+
+;; Auto-saving does not cooperate with org-crypt.el: so you need
+;; to turn it off if you plan to use org-crypt.el quite often.
+;; Otherwise, you'll get an (annoying) message each time you
+;; start Org.
+
+;; To turn it off only locally, you can insert this:
+;;
+;; # -*- buffer-auto-save-file-name: nil; -*-
+;; (setq auto-save-default nil)
+
+
+(defun try-require (feature)
+  (condition-case nil
+      (require feature)
+    (error (progn
+             (message "could not require %s" feature)
+             nil))))
+
+; (when (try-require 'py-isort)
+;  (add-hook 'before-save-hook 'py-isort-before-save))
+
+; (when (try-require 'py-autopep8)
+;  (add-hook 'python-mode-hook 'py-autopep8-enable-on-save))
+
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+(when (try-require 'py-yapf)
+  (add-hook 'python-mode-hook 'py-yapf-enable-on-save))
+
+(remove-hook 'python-mode-hook 'py-autopep8-enable-on-save)
