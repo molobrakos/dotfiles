@@ -35,7 +35,7 @@ test -f "/etc/bash_completion.d/password-store" && . /etc/bash_completion.d/pass
 test -f "/etc/bash_completion.d/mosh" && . /etc/bash_completion.d/mosh
 test -f "/etc/bash_completion.d/docker.io" && . /etc/bash_completion.d/docker.io
 
-eval `keychain --noask --ignore-missing --eval id_rsa eerepoid EDEBB415`
+test -f /usr/bin/keychain && keychain --noask --ignore-missing --eval id_rsa eerepoid EDEBB415
 
 # Don't freeze when ctrl+s in a shell
 # https://unix.stackexchange.com/questions/12107/how-to-unfreeze-after-accidentally-pressing-ctrl-s-in-a-terminal
