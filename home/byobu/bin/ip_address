@@ -1,0 +1,6 @@
+#!/bin/sh -e
+
+__ip_address() {
+    . "$BYOBU_PREFIX/lib/$PKG/ip_address"
+    printf "$(__ip_address)"
+}
