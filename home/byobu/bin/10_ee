@@ -1,2 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+
+. /usr/lib/byobu/include/dirs
+. /usr/lib/byobu/include/shutil
+
 #echo ""
