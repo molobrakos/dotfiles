@@ -1,2 +1,2 @@
-tmux_left="custom #hostname #ip_address reboot_required updates_available"
-tmux_right="cpu_count cpu_freq date time"
+tmux_left="hostname ip_address"
+tmux_right="reboot_required updates_available cpu_freq date time"
