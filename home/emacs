@@ -41,7 +41,7 @@
 ;; and column
 (column-number-mode t)
 
-(size-indication-mode t))
+(size-indication-mode t)
 (display-battery-mode t)
 
 (setq make-backup-files nil) ; stop creating those backup~ files
