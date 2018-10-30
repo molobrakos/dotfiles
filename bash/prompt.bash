@@ -69,7 +69,7 @@ function set_bash_prompt () {
   # Set the bash prompt variable.
   PS1="${PYTHON_VIRTUALENV}${GREEN}\u${COLOR_NONE}\
 @${LIGHT_GREEN}\h${COLOR_NONE} \
-\D{%d/%m} \t ${YELLOW}\w${COLOR_NONE}\
+\D{%m-%d} \t ${YELLOW}\w${COLOR_NONE}\
 ${GIT_BRANCH}${GIT_STATE}${PROMPT_SYMBOL} "
 }
 
