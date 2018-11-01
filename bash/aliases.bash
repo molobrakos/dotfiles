@@ -129,11 +129,11 @@ alias ase='aptitude search'
 alias aptshow='aptitude show'
 alias uninstall="sudo aptitude remove"
 alias upgrade='
-sudo aptitude -y update
+sudo aptitude -y update &&
 sudo aptitude -y safe-upgrade &&
 sudo aptitude autoclean &&
 sudo apt -y autoremove &&
-sudo purge-old-kernels --keep 3 -y'
+sudo purge-old-kernels'
 
 # ----------------------------------
 # curl
