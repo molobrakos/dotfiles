@@ -1,0 +1,14 @@
+profile
+profile.tmux
+color
+color.tmux
+keybindings
+keybindings.tmux
+windows
+windows.tmux
+prompt
+datetime.tmux
+.welcome-displayed
+.tmux.conf
+.ssh-agent
+.screenrc
