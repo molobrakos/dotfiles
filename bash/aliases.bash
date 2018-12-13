@@ -90,8 +90,6 @@ alias sshguard-show-bans='sudo iptables -L sshguard --line-numbers'
 alias sshguard-unban='sudo iptables -D sshguard '
 alias ssh-host-key="ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key"
 
-alias glances="glances --disable-history"/
-
 # view http traffic
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""

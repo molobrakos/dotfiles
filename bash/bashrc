@@ -30,8 +30,6 @@ EDITOR="jed"
 BROWSER="google-chrome"
 PREVIEW="less"
 
-PATH=$HOME/.local/bin:$PATH
-
 # Don't check mail when opening terminal.
 unset MAILCHECK
 
