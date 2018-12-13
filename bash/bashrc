@@ -12,6 +12,9 @@ test -f $HOME/.dotfiles/bash/bashrc_$(hostname -s) && . $HOME/.dotfiles/bash/bas
 # Aliases
 test -f $HOME/.dotfiles/bash/aliases.bash && . $HOME/.dotfiles/bash/aliases.bash
 
+# Aliases
+test -f $HOME/.aliases_local && . $HOME/.dotfiles/aliases_local
+
 # Allow for .bash_local overrides
 test -f "$HOME/.bashrc_local" && . $HOME/.bashrc_local
 
@@ -24,6 +27,8 @@ LANGUAGE=en_US.UTF-8
 EDITOR="jed"
 BROWSER="google-chrome"
 PREVIEW="less"
+
+PATH=$HOME/.local/bin:$PATH
 
 # Don't check mail when opening terminal.
 unset MAILCHECK
