@@ -69,6 +69,9 @@ catt() {
   done
 }
 
+alias glances="glances --disable-history"
+alias realias=". $HOME/.dotfiles/bash/aliases.bash"
+
 alias bat="upower -i \$(upower -e | grep -i bat) | grep -E 'state|to\ full|percentage' && upower -i \$(upower -e | grep -i line) | grep online"
 
 alias rmtmp="rm *~"
